@@ -13,7 +13,7 @@ class UserController {
 
   //회원가입 API=====================ok
   join = async (req, res) => {
-    // try {
+    try {
       const { userId, nickName, password, email, address } = req.body;
       //로그인 데이터 형식 check
 
@@ -37,11 +37,11 @@ class UserController {
       res.status(200).json({
         message: "success",
       });
-    // } catch (err) {
-    //   res.status(400).json({
-    //     errorMessage: "회원가입 오류",
-    //   });
-    // }
+    } catch (err) {
+      res.status(400).json({
+        errorMessage: "회원가입 오류",
+      });
+    }
   };
 
   //로그인 API========================ok
@@ -70,9 +70,12 @@ class UserController {
         "2d"
       );
 
+      
+
       res.json({
         token,
       });
+
     } catch (err) {
       res.status(400).json({
         errorMessage: "로그인 오류",
